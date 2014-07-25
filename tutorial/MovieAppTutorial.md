@@ -497,7 +497,7 @@ This section demonstrates how to extend the Person object by one endpoint with r
 Before anything can happen, we need to know what we'll be asking the database. In the Neo4j browser, try the following query, filling in actor names for `name1` and `name2`:
 
 ```
-MATCH p = shortestPath( (p1:Person {name:{name1} })-[:ACTED_IN*]-(target:Person {name:{name2} }) )
+MATCH p = shortestPath( (p1:Person {name:"name1"})-[:ACTED_IN*]-(target:Person {name:"name2"}))
 WITH extract(n in nodes(p)|n) AS coll
 WITH filter(thing in coll where length(thing.name)> 0) AS bacon
 UNWIND(bacon) AS person
